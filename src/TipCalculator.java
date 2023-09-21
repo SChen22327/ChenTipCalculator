@@ -9,6 +9,8 @@ import java.util.ArrayList;
     link for arraylist
    (4) https://www.javatpoint.com/java-break
      link for breaking loop
+   (5) https://stackoverflow.com/questions/44830259/can-you-have-two-conditions-in-an-if-statement
+     link for multiple conditions
  */
 public class TipCalculator {
     public static void main(String[] args) {
@@ -17,8 +19,8 @@ public class TipCalculator {
         ArrayList<Double> itemCost = new ArrayList<Double>();
         double totalCost = 0;
 
-        System.out.print("Welcome to the tip calculator!");
-        System.out.print("How many people are dining today?");
+        System.out.println("Welcome to the tip calculator!");
+        System.out.print("How many people are dining today? ");
         int party = scan.nextInt();
         scan.nextLine();
 
@@ -42,7 +44,7 @@ public class TipCalculator {
             cost = scan.nextDouble();
             scan.nextLine();
 
-            if(cost == -1) {
+            if (cost == -1) {
                 break; //(4)
             }
 
@@ -53,8 +55,18 @@ public class TipCalculator {
             itemNames.add(item);
             totalCost += cost;
         }
-        System.out.println(itemCost);
-        System.out.println(itemNames);
-        System.out.print(totalCost);
+        System.out.println("Your total bill before tips is: $" + totalCost);
+        if (totalCost >= 50 && party < 4) { //(5)
+            System.out.println("Wow that's gonna be quite costly for your party of " + party + ".");
+        }
+        System.out.println("You chose to tip " + (int) (percentTip * 100) + "%");
+        if (percentTip <= .15 && percentTip >= .10) {
+            System.out.println("That's a decent tip!");
+        } else if (percentTip > 15) {
+            System.out.println("Wow, that's an amazing tip.");
+        }
+        percentTip *= totalCost;
+        System.out.println("You're tipping a total of $" + percentTip + ".");
+        System.out.println("The total after tip is $" + (Math.round((totalCost+percentTip)*100)/100) + ".");
     }
 }
