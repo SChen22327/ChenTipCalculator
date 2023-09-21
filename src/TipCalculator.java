@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        ArrayList<String> itemNames = new ArrayList<String>();
+        ArrayList<String> itemNames = new ArrayList<String>(); //(3)
         ArrayList<Double> itemCost = new ArrayList<Double>();
         double totalCost = 0;
 
@@ -22,7 +22,7 @@ public class TipCalculator {
         int party = scan.nextInt();
         scan.nextLine();
 
-        System.out.println("How much are you tipping our \033[3mfine\033[0m waiters?"); //(1)
+        System.out.println("How much are you tipping our \033[3mfine\033[0m waiters?"); //(2)
         System.out.print("Please tell me the percent, as a decimal: ");
         double percentTip = scan.nextDouble();
         scan.nextLine();
@@ -43,7 +43,7 @@ public class TipCalculator {
             scan.nextLine();
 
             if(cost == -1) {
-                break;
+                break; //(4)
             }
 
             System.out.print("The name of the next item: ");
