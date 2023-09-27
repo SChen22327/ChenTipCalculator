@@ -56,7 +56,7 @@ public class TipCalculator {
             totalCost += cost;
         }
         totalCost = Math.round(totalCost * 100) / 100.0;
-        System.out.println("Your total bill before tips is: $" + totalCost);
+        System.out.println("Your total bill before tips is: $" + String.format("%.2f",totalCost));
         if (totalCost >= 50 && party < 4) { //(5)
             System.out.println("Wow that's gonna be quite costly for your party of " + party + ".");
         }
@@ -68,9 +68,18 @@ public class TipCalculator {
         }
         percentTip *= totalCost;
         percentTip = Math.round(percentTip*100)/100.0;
-        System.out.println("You're tipping a total of $" + percentTip + ".");
-        System.out.println("The total including tips is $" + (totalCost + percentTip) + ".");
-        System.out.println("Before tips, each person is going to pay " + (totalCost / party));
+        System.out.println("You're tipping a total of $" + String.format("%.2f",percentTip) + ".");
+        System.out.println("The total including tips is $" + String.format("%.2f",(totalCost + percentTip)) + ".");
+        totalCost = Math.round(totalCost * 100 / party) / 100.0;
+        System.out.println("Before tips, each person is going to pay $" + String.format("%.2f",totalCost));
+        percentTip = Math.round(percentTip * 100 / party) / 100.0;
+        System.out.println("Each person is going to tip $" + String.format("%.2f",percentTip));
+        System.out.println("Each person will pay $" + String.format("%.2f",(totalCost + percentTip)) + " in total");
+
+        System.out.println("Items ordered: ");
+        for (String i : itemNames) {
+            System.out.println(i + " cost $");
+        }
 
     }
 }
