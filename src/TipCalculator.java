@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-
+// links
 /* (1) https://stackoverflow.com/questions/11701399/round-up-to-2-decimal-places-in-java
     link for rounding to two decimals
    (2) https://stackoverflow.com/questions/30310147/how-to-print-an-string-variable-as-italicized-text
@@ -15,10 +15,11 @@ import java.util.ArrayList;
 public class TipCalculator {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        //creates a list for the item names and their costs
         ArrayList<String> itemNames = new ArrayList<String>(); //(3)
         ArrayList<Double> itemCost = new ArrayList<Double>();
         double totalCost = 0;
-
+        //asking stuff
         System.out.println("Welcome to the tip calculator!");
         System.out.print("How many people are dining today? ");
         int party = scan.nextInt();
@@ -28,7 +29,7 @@ public class TipCalculator {
         System.out.print("Please tell me the percent, as a decimal: ");
         double percentTip = scan.nextDouble();
         scan.nextLine();
-
+        //adding the first item so cost equals something for the while loop
         System.out.print("The cost of the item in dollars and cents(enter -1 to end): ");
         double cost = scan.nextDouble();
         scan.nextLine();
@@ -39,6 +40,9 @@ public class TipCalculator {
         itemCost.add(cost);
         itemNames.add(item);
         totalCost += cost;
+        //the while loop asks FIRST what price they're putting in.
+        //Putting in -1 will break out of the loop immediately
+        //putting in anything else will let the code continue to ask the item name and adds them to the lists and totalCost
         while (cost != -1) {
             System.out.print("Enter another item in dollars and cents, enter -1 to end: ");
             cost = scan.nextDouble();
@@ -55,27 +59,34 @@ public class TipCalculator {
             itemNames.add(item);
             totalCost += cost;
         }
+        //sometimes it prints out a very long decimal, so I added this to make it a normal price.
         totalCost = Math.round(totalCost * 100) / 100.0;
         System.out.println("Your total bill before tips is: $" + String.format("%.2f",totalCost));
         if (totalCost / party >= 20) { //(5)
+            //if the price per person before tips is $20 or more, prints a little comment
             System.out.println("Wow that's gonna be quite costly for your party of " + party + ".");
         }
+        //prints the tip that was entered as a decimal as a percent and prints a comment if the tip is good
         System.out.println("You chose to tip " + (int) (percentTip * 100) + "%");
         if (percentTip <= .15 && percentTip >= .10) {
             System.out.println("That's a decent tip!");
         } else if (percentTip > .15) {
             System.out.println("Wow, that's an amazing tip.");
         }
+        //multiplies percentTip to totalCost so the percentTip is now the total amount of tip
         percentTip *= totalCost;
         percentTip = Math.round(percentTip*100)/100.0;
         System.out.println("You're tipping a total of $" + String.format("%.2f",percentTip) + ".");
         System.out.println("The total including tips is $" + String.format("%.2f",(totalCost + percentTip)) + ".");
+        //finds the cost per person before and after tips
         totalCost = Math.round(totalCost * 100 / party) / 100.0;
         System.out.println("Before tips, each person is going to pay $" + String.format("%.2f",totalCost));
         percentTip = Math.round(percentTip * 100 / party) / 100.0;
         System.out.println("Each person is going to tip $" + String.format("%.2f",percentTip));
         System.out.println("Each person will pay $" + String.format("%.2f",(totalCost + percentTip)) + " in total");
 
+        //Extra Credit
+        //prints the items ordered along with its price
         System.out.println("\nItems ordered: ");
         int a = 0;
         for (String i : itemNames) {
