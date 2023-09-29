@@ -70,7 +70,7 @@ public class TipCalculator {
         }
         //prints the tip that was entered as a decimal as a percent and prints a comment if the tip is good
         //also prints out the percent as a whole number if it ends with .0, otherwise prints the whole decimal
-        if (percentTip / (int) percentTip > 1){
+        if (percentTip / (int) percentTip > 1) {
             System.out.println("You chose to tip " + percentTip + "%");
         } else {
             System.out.println("You chose to tip " + (int) percentTip + "%");
@@ -82,23 +82,23 @@ public class TipCalculator {
         }
         //multiplies percentTip to totalCost so the percentTip is now the total amount of tip
         percentTip = (percentTip / 100.0 ) * totalCost;
-        percentTip = Math.round(percentTip*100)/100.0;
-        System.out.println("You're tipping a total of $" + String.format("%.2f",percentTip) + ".");
-        System.out.println("The total including tips is $" + String.format("%.2f",(totalCost + percentTip)) + ".");
+        percentTip = Math.round(percentTip * 100) / 100.0;
+        System.out.println("You're tipping a total of $" + String.format("%.2f", percentTip) + ".");
+        System.out.println("The total including tips is $" + String.format("%.2f", (totalCost + percentTip)) + ".");
         //finds the cost per person before and after tips
         totalCost = Math.round(totalCost * 100 / party) / 100.0;
         System.out.println("Before tips, each person is going to pay $" + String.format("%.2f",totalCost));
         percentTip = Math.round(percentTip * 100 / party) / 100.0;
-        System.out.println("Each person is going to tip $" + String.format("%.2f",percentTip));
-        System.out.println("Each person will pay $" + String.format("%.2f",(totalCost + percentTip)) + " in total");
+        System.out.println("Each person is going to tip $" + String.format("%.2f", percentTip));
+        System.out.println("Each person will pay $" + String.format("%.2f", (totalCost + percentTip)) + " in total");
 
         //Extra Credit
         //prints the items ordered along with its price
         System.out.println("\nItems ordered: ");
         int a = 0;
         for (String i : itemNames) {
-            System.out.println(i + " cost $" + String.format("%.2f",itemCost.get(a)));
-            a ++;
+            System.out.println(i + " cost $" + String.format("%.2f", itemCost.get(a)));
+            a++;
         }
 
     }
